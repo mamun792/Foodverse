@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Favorites from "./components/Favorites";
 import { useState, useRef } from "react";
+import RecpiItem from "./components/RecpiItem";
 
 function App() {
   const [searchItem, setSearchItem] = useState("");
@@ -18,6 +19,7 @@ function App() {
     getData(searchItem);
     setSearchItem("");
     inputref.current.blur();
+    setData([]);
   };
 
   const getData = async (searchItem) => {
@@ -55,8 +57,10 @@ function App() {
             element={<Home data={data} error={error} loading={loading} />}
           />
           <Route path="/favorit" element={<Favorites />} />
+          <Route path="/recpi-item/:recpiId" element={<RecpiItem/>} />
         </Routes>
       </div>
+     
       <Footer />
     </>
   );
